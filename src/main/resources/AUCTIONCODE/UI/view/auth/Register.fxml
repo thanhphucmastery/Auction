@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane fx:id="myPaneField" prefHeight="760.0" prefWidth="1040.0" styleClass="auth-background" stylesheets="@auction-theme.css" xmlns="http://javafx.com/javafx/21.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AUCTIONCODE.UI.Controller.auth.RegisterController">
+   <children>
+      <VBox maxWidth="760.0" spacing="18.0" styleClass="auth-card">
+         <children>
+            <VBox spacing="5.0">
+               <children>
+                  <Label text="Tạo tài khoản" style="-fx-font-size: 28px; -fx-font-weight: 800;" />
+                  <Label text="Đăng ký Player hoặc Admin bằng Business Code" styleClass="muted" />
+               </children>
+            </VBox>
+
+            <GridPane hgap="18.0" vgap="13.0">
+               <children>
+                  <VBox spacing="7.0" GridPane.columnSpan="2">
+                     <children>
+                        <Label text="Họ và tên" style="-fx-font-weight: 700;" />
+                        <TextField fx:id="FullNameField" prefHeight="42.0" promptText="Nguyễn Văn A" />
+                     </children>
+                  </VBox>
+
+                  <VBox spacing="7.0" GridPane.rowIndex="1">
+                     <children>
+                        <Label text="Tên đăng nhập" style="-fx-font-weight: 700;" />
+                        <TextField fx:id="UsernameField" prefHeight="42.0" promptText="username" />
+                     </children>
+                  </VBox>
+                  <VBox spacing="7.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <Label text="Business Code" style="-fx-font-weight: 700;" />
+                        <TextField fx:id="BusinessCodeField" prefHeight="42.0" promptText="Bỏ trống nếu là Player" />
+                     </children>
+                  </VBox>
+
+                  <VBox spacing="7.0" GridPane.rowIndex="2">
+                     <children>
+                        <Label text="Số điện thoại" style="-fx-font-weight: 700;" />
+                        <TextField fx:id="PhoneField" prefHeight="42.0" promptText="09xx..." />
+                     </children>
+                  </VBox>
+                  <VBox spacing="7.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                        <Label text="Email" style="-fx-font-weight: 700;" />
+                        <TextField fx:id="EmailField" prefHeight="42.0" promptText="example@gmail.com" />
+                     </children>
+                  </VBox>
+
+                  <VBox spacing="7.0" GridPane.columnSpan="2" GridPane.rowIndex="3">
+                     <children>
+                        <Label text="Địa chỉ" style="-fx-font-weight: 700;" />
+                        <TextField fx:id="AddressField" prefHeight="42.0" promptText="Địa chỉ nhận hàng" />
+                     </children>
+                  </VBox>
+
+                  <VBox spacing="7.0" GridPane.rowIndex="4">
+                     <children>
+                        <Label text="Mật khẩu" style="-fx-font-weight: 700;" />
+                        <PasswordField fx:id="PasswordField" prefHeight="42.0" promptText="Nhập mật khẩu" />
+                     </children>
+                  </VBox>
+                  <VBox spacing="7.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <children>
+                        <Label text="Xác nhận mật khẩu" style="-fx-font-weight: 700;" />
+                        <PasswordField fx:id="ConfirmPasswordField" prefHeight="42.0" promptText="Nhập lại mật khẩu" />
+                     </children>
+                  </VBox>
+               </children>
+            </GridPane>
+
+            <Label fx:id="ErrorLabel" textFill="#dc2626" wrapText="true" />
+            <Button fx:id="RegisterButton" maxWidth="Infinity" mnemonicParsing="false" onAction="#handleRegister" prefHeight="48.0" styleClass="primary-button" text="Tạo tài khoản" />
+            <HBox alignment="CENTER" spacing="5.0">
+               <children>
+                  <Label text="Đã có tài khoản?" styleClass="muted" />
+                  <Hyperlink onAction="#goToLogin" text="Đăng nhập" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+   </padding>
+</StackPane>
+
