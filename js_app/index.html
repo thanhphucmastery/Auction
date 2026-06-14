@@ -1,0 +1,1060 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Intelligence Portfolio - Trần Thanh Phúc</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --ink: #18212f;
+        --muted: #637083;
+        --paper: #fbfaf7;
+        --panel: #ffffff;
+        --line: #dfe5ec;
+        --teal: #0e8f8f;
+        --green: #2d9d68;
+        --coral: #e85d4f;
+        --gold: #d9a520;
+        --violet: #6750a4;
+        --shadow: 0 22px 70px rgba(25, 33, 47, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          linear-gradient(180deg, rgba(14, 143, 143, 0.11), transparent 520px),
+          var(--paper);
+        color: var(--ink);
+        font-family:
+          "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Arial, sans-serif;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .site-shell {
+        width: min(1180px, calc(100% - 36px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        border-bottom: 1px solid rgba(223, 229, 236, 0.72);
+        background: rgba(251, 250, 247, 0.84);
+        backdrop-filter: blur(18px);
+      }
+
+      .topbar-inner {
+        min-height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 800;
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border-radius: 14px;
+        background: conic-gradient(from 160deg, var(--teal), var(--green), var(--gold), var(--coral), var(--teal));
+        color: #fff;
+        box-shadow: 0 12px 30px rgba(14, 143, 143, 0.24);
+      }
+
+      .brand-text span {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .nav a {
+        padding: 10px 12px;
+        border-radius: 999px;
+        color: #435064;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .nav a:hover {
+        background: #eef4f3;
+        color: var(--ink);
+      }
+
+      .hero {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1.04fr) minmax(340px, 0.96fr);
+        gap: 42px;
+        align-items: center;
+        min-height: calc(100vh - 72px);
+        padding: 68px 0 42px;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 20px auto auto -42px;
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        background:
+          radial-gradient(circle, rgba(217, 165, 32, 0.23), transparent 62%);
+        pointer-events: none;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        right: -24px;
+        bottom: 20px;
+        width: 420px;
+        height: 420px;
+        opacity: 0.18;
+        background-image:
+          linear-gradient(rgba(14, 143, 143, 0.45) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(14, 143, 143, 0.45) 1px, transparent 1px);
+        background-size: 28px 28px;
+        mask-image: radial-gradient(circle, #000, transparent 68%);
+        pointer-events: none;
+      }
+
+      .hero-text,
+      .hero-visual {
+        position: relative;
+        z-index: 1;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 22px;
+        padding: 8px 12px;
+        border: 1px solid rgba(14, 143, 143, 0.22);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        color: var(--teal);
+        font-size: 13px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .signal {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--green);
+        box-shadow: 0 0 0 6px rgba(45, 157, 104, 0.14);
+      }
+
+      h1 {
+        max-width: 780px;
+        margin: 0;
+        font-size: clamp(42px, 7vw, 82px);
+        line-height: 0.98;
+        letter-spacing: 0;
+      }
+
+      .hero-copy {
+        max-width: 700px;
+        margin: 24px 0 0;
+        color: #465367;
+        font-size: clamp(17px, 2vw, 20px);
+        line-height: 1.65;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 34px;
+      }
+
+      .hero-pills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 24px;
+      }
+
+      .hero-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 36px;
+        padding: 0 12px;
+        border: 1px solid rgba(223, 229, 236, 0.95);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.78);
+        color: #465367;
+        font-size: 13px;
+        font-weight: 800;
+        box-shadow: 0 10px 26px rgba(25, 33, 47, 0.06);
+      }
+
+      .hero-pill::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--pill-color, var(--teal));
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        max-width: 620px;
+        margin-top: 30px;
+      }
+
+      .hero-stat {
+        min-height: 98px;
+        padding: 16px;
+        border: 1px solid rgba(223, 229, 236, 0.9);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.82);
+        box-shadow: 0 12px 34px rgba(25, 33, 47, 0.07);
+      }
+
+      .hero-stat strong,
+      .hero-stat span {
+        display: block;
+      }
+
+      .hero-stat strong {
+        color: var(--ink);
+        font-size: 25px;
+      }
+
+      .hero-stat span {
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .btn {
+        min-height: 48px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 0 18px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: #fff;
+        color: var(--ink);
+        font-weight: 800;
+        transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+        border-color: rgba(14, 143, 143, 0.42);
+        box-shadow: 0 14px 34px rgba(25, 33, 47, 0.12);
+      }
+
+      .btn.primary {
+        border: 0;
+        background: var(--ink);
+        color: #fff;
+      }
+
+      .btn.small {
+        min-height: 42px;
+        padding-inline: 14px;
+        font-size: 14px;
+      }
+
+      .hero-visual {
+        display: grid;
+        align-content: center;
+        gap: 16px;
+      }
+
+      .portrait-card {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        border: 1px solid rgba(223, 229, 236, 0.82);
+        border-radius: 28px;
+        background: var(--panel);
+        box-shadow: var(--shadow);
+      }
+
+      .portrait-card::before {
+        content: "Network / AI / Security";
+        position: absolute;
+        top: 18px;
+        left: 18px;
+        z-index: 2;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(24, 33, 47, 0.78);
+        color: #fff;
+        font-size: 12px;
+        font-weight: 850;
+        backdrop-filter: blur(12px);
+      }
+
+      .portrait-media {
+        position: relative;
+        height: 390px;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 18% 18%, rgba(217, 165, 32, 0.22), transparent 34%),
+          linear-gradient(135deg, rgba(14, 143, 143, 0.14), rgba(232, 93, 79, 0.08)),
+          #f7fbfb;
+      }
+
+      .portrait-media img {
+        width: min(290px, 72%);
+        height: 340px;
+        object-fit: cover;
+        object-position: center top;
+        border: 1px solid rgba(223, 229, 236, 0.9);
+        border-radius: 24px;
+        background: #fff;
+        box-shadow: 0 18px 46px rgba(25, 33, 47, 0.16);
+      }
+
+      .portrait-content {
+        padding: 24px;
+      }
+
+      .portrait-content h2 {
+        margin: 0 0 8px;
+        font-size: 27px;
+      }
+
+      .portrait-content p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .portrait-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 16px;
+      }
+
+      .portrait-tags span {
+        padding: 7px 9px;
+        border-radius: 999px;
+        background: #f3f5f7;
+        color: #465367;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .visual-note {
+        display: grid;
+        grid-template-columns: 42px 1fr;
+        gap: 12px;
+        align-items: center;
+        margin-top: 16px;
+        padding: 16px;
+        border: 1px solid rgba(223, 229, 236, 0.88);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.84);
+        box-shadow: 0 14px 38px rgba(25, 33, 47, 0.08);
+      }
+
+      .visual-note b {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border-radius: 14px;
+        background: var(--teal);
+        color: #fff;
+      }
+
+      .visual-note strong,
+      .visual-note span {
+        display: block;
+      }
+
+      .visual-note span {
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      section {
+        padding: 72px 0;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 28px;
+      }
+
+      .section-head h2 {
+        max-width: 700px;
+        margin: 0;
+        font-size: clamp(30px, 4vw, 48px);
+        line-height: 1.08;
+      }
+
+      .section-head p {
+        max-width: 430px;
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .tool-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+
+      .tool-card {
+        min-height: 160px;
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: #fff;
+      }
+
+      .tool-card b {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 18px;
+      }
+
+      .tool-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .projects {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      .project-card {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        min-height: 440px;
+        border: 1px solid rgba(223, 229, 236, 0.9);
+        border-radius: 22px;
+        background: #fff;
+        box-shadow: 0 12px 34px rgba(25, 33, 47, 0.07);
+        transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 24px 64px rgba(25, 33, 47, 0.13);
+      }
+
+      .thumb {
+        position: relative;
+        min-height: 172px;
+        padding: 0;
+        background: #eef2f5;
+      }
+
+      .thumb::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 50%, rgba(24, 33, 47, 0.58));
+        pointer-events: none;
+      }
+
+      .thumb img {
+        width: 100%;
+        height: 190px;
+        display: block;
+        object-fit: cover;
+        object-position: center;
+        transition: transform 240ms ease;
+      }
+
+      .project-card:hover .thumb img {
+        transform: scale(1.035);
+      }
+
+      .thumb-label {
+        position: absolute;
+        left: 16px;
+        right: 16px;
+        bottom: 14px;
+        z-index: 2;
+        color: #fff;
+        font-size: 13px;
+        font-weight: 850;
+        line-height: 1.35;
+        text-shadow: 0 2px 16px rgba(0, 0, 0, 0.42);
+      }
+
+      .project-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 22px;
+      }
+
+      .project-kicker {
+        color: var(--accent, var(--teal));
+        font-size: 13px;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .project-card h3 {
+        margin: 10px 0 10px;
+        font-size: 24px;
+        line-height: 1.18;
+      }
+
+      .project-card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.58;
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 18px 0 22px;
+      }
+
+      .chip {
+        padding: 7px 9px;
+        border-radius: 999px;
+        background: #f3f5f7;
+        color: #4b586a;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .project-footer {
+        margin-top: auto;
+      }
+
+      .timeline {
+        display: grid;
+        gap: 14px;
+        position: relative;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        top: 28px;
+        bottom: 28px;
+        left: 33px;
+        width: 2px;
+        background: linear-gradient(180deg, var(--teal), var(--gold), var(--coral));
+        opacity: 0.5;
+      }
+
+      .timeline-row {
+        position: relative;
+        display: grid;
+        grid-template-columns: 68px 170px 1fr;
+        gap: 18px;
+        align-items: center;
+        padding: 18px 20px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: #fff;
+        box-shadow: 0 10px 28px rgba(25, 33, 47, 0.06);
+      }
+
+      .timeline-row b {
+        position: relative;
+        z-index: 1;
+        width: 44px;
+        height: 44px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--ink);
+        color: #fff;
+        font-size: 14px;
+      }
+
+      .timeline-row span {
+        color: var(--muted);
+      }
+
+      .timeline-row strong {
+        font-size: 18px;
+      }
+
+      .final-cta {
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 26px;
+        align-items: center;
+        padding: 34px;
+        border-radius: 28px;
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.14), transparent),
+          var(--ink);
+        color: #fff;
+      }
+
+      .final-cta h2 {
+        margin: 0 0 10px;
+        font-size: clamp(28px, 4vw, 46px);
+      }
+
+      .final-cta p {
+        max-width: 740px;
+        margin: 0;
+        color: rgba(255, 255, 255, 0.72);
+        line-height: 1.65;
+      }
+
+      .footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 34px 0 48px;
+        color: var(--muted);
+      }
+
+      .footer strong {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--ink);
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 10px;
+      }
+
+      .footer-links a {
+        padding: 9px 12px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: #fff;
+        color: var(--ink);
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: opacity 520ms ease, transform 520ms ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 960px) {
+        .hero,
+        .final-cta {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          min-height: auto;
+        }
+
+        .hero-visual {
+          align-content: start;
+        }
+
+        .projects,
+        .tool-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .section-head {
+          display: block;
+        }
+
+        .section-head p {
+          margin-top: 12px;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .site-shell {
+          width: min(100% - 24px, 1180px);
+        }
+
+        .topbar-inner {
+          min-height: 64px;
+        }
+
+        .nav {
+          display: none;
+        }
+
+        .hero {
+          padding-top: 38px;
+        }
+
+        .hero::before,
+        .hero::after {
+          display: none;
+        }
+
+        .hero-stats {
+          grid-template-columns: 1fr;
+        }
+
+        .portrait-media {
+          height: 360px;
+        }
+
+        .portrait-media img {
+          width: min(270px, 78%);
+          height: 320px;
+        }
+
+        .projects,
+        .tool-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .timeline-row {
+          grid-template-columns: 58px 1fr;
+          gap: 12px;
+        }
+
+        .timeline-row span {
+          grid-column: 2;
+        }
+
+        .timeline::before {
+          left: 29px;
+        }
+
+        .footer {
+          display: grid;
+          justify-items: start;
+        }
+
+        .footer-links {
+          justify-content: start;
+        }
+
+        section {
+          padding: 50px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="site-shell topbar-inner">
+        <a class="brand" href="#top" aria-label="Trang đầu">
+          <span class="brand-mark">DI</span>
+          <span class="brand-text">Trần Thanh Phúc <span>Digital Intelligence Portfolio</span></span>
+        </a>
+        <nav class="nav" aria-label="Điều hướng">
+          <a href="#overview">Tổng quan</a>
+          <a href="#projects">Nhiệm vụ</a>
+          <a href="#timeline">Tiến trình</a>
+          <a href="#conclusion">Kết luận</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="site-shell hero">
+        <div class="hero-text reveal">
+          <p class="eyebrow"><span class="signal"></span> Portfolio số + minh chứng Notion</p>
+          <h1>Digital Intelligence Portfolio</h1>
+          <p class="hero-copy">
+            Tôi xây dựng trang này như một website portfolio chính: gọn, trực quan và dễ nộp.
+            Mỗi nhiệm vụ có phần tóm tắt trên web, còn nội dung chi tiết và minh chứng được mở
+            trong Notion.
+          </p>
+          <div class="hero-pills" aria-label="Năng lực chính">
+            <span class="hero-pill" style="--pill-color: var(--teal)">Data organization</span>
+            <span class="hero-pill" style="--pill-color: var(--gold)">Research strategy</span>
+            <span class="hero-pill" style="--pill-color: var(--violet)">Prompt engineering</span>
+            <span class="hero-pill" style="--pill-color: var(--coral)">Responsible AI</span>
+          </div>
+          <div class="hero-actions">
+            <a class="btn primary" href="#projects">Xem các nhiệm vụ</a>
+            <a class="btn" href="https://app.notion.com/p/37778b21d03a81ea9ed7fc19d19c82a6" target="_blank" rel="noreferrer">Mở Notion gốc</a>
+          </div>
+          <div class="hero-stats" aria-label="Tóm tắt portfolio">
+            <div class="hero-stat"><strong>07</strong><span>case study học tập được trình bày theo từng nhiệm vụ</span></div>
+            <div class="hero-stat"><strong>06</strong><span>nhóm kỹ năng số: file, search, prompt, team, create, ethics</span></div>
+            <div class="hero-stat"><strong>100%</strong><span>minh chứng có ảnh trực quan và link chi tiết trên Notion</span></div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <article class="portrait-card">
+            <div class="portrait-media">
+              <img src="./assets/avatar-tran-thanh-phuc.jpg" alt="Ảnh chân dung Trần Thanh Phúc" />
+            </div>
+            <div class="portrait-content">
+              <h2>Trần Thanh Phúc</h2>
+              <p>MSSV 25023517 · Mạng máy tính và Truyền thông dữ liệu</p>
+              <div class="portrait-tags" aria-label="Định hướng học tập">
+                <span>Network</span>
+                <span>System</span>
+                <span>Cloud</span>
+                <span>Security</span>
+              </div>
+            </div>
+          </article>
+          <div class="visual-note">
+            <b>AI</b>
+            <div>
+              <strong>Portfolio học tập số</strong>
+              <span>Tổ chức dữ liệu, khai thác thông tin, cộng tác và sử dụng AI có trách nhiệm.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="overview" class="site-shell">
+        <div class="section-head reveal">
+          <h2>Năng lực số được trình bày qua sản phẩm và minh chứng.</h2>
+          <p>Portfolio tập trung vào cách tôi tổ chức dữ liệu, khai thác thông tin, dùng AI, hợp tác trực tuyến và bảo vệ dữ liệu trong quá trình học tập.</p>
+        </div>
+        <div class="tool-grid">
+          <article class="tool-card reveal">
+            <b>Quản trị dữ liệu</b>
+            <p>Xây dựng cấu trúc thư mục, quy tắc đặt tên và cách lưu phiên bản để dữ liệu học tập dễ tìm lại.</p>
+          </article>
+          <article class="tool-card reveal">
+            <b>Nghiên cứu & kiểm chứng</b>
+            <p>Dùng toán tử tìm kiếm, nguồn học thuật và tiêu chí đánh giá để chọn thông tin đáng tin cậy.</p>
+          </article>
+          <article class="tool-card reveal">
+            <b>AI workflow</b>
+            <p>Thiết kế prompt rõ bối cảnh, kiểm tra đầu ra và chuyển ý tưởng thành sản phẩm nội dung số.</p>
+          </article>
+          <article class="tool-card reveal">
+            <b>Đạo đức số</b>
+            <p>Đặt trọng tâm vào quyền riêng tư, bản quyền, bảo mật dữ liệu và trách nhiệm khi sử dụng AI.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects" class="site-shell">
+        <div class="section-head reveal">
+          <h2>Nhiệm vụ học tập</h2>
+          <p>Mỗi card là một case study nhỏ. Bấm nút để mở nội dung chi tiết trên Notion ở tab mới.</p>
+        </div>
+        <div class="projects" id="projectGrid"></div>
+      </section>
+
+      <section id="timeline" class="site-shell">
+        <div class="section-head reveal">
+          <h2>Tiến trình năng lực số</h2>
+          <p>Từ tổ chức dữ liệu đến dùng AI có trách nhiệm. Đây là tuyến câu chuyện chính của portfolio.</p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-row reveal"><b>01</b><strong>Organize</strong><span>Biết quản lý file, thư mục và phiên bản.</span></div>
+          <div class="timeline-row reveal"><b>02</b><strong>Research</strong><span>Biết tìm kiếm và đánh giá nguồn đáng tin.</span></div>
+          <div class="timeline-row reveal"><b>03</b><strong>Prompt</strong><span>Biết giao tiếp với AI bằng bối cảnh và tiêu chí rõ.</span></div>
+          <div class="timeline-row reveal"><b>04</b><strong>Collaborate</strong><span>Biết làm việc nhóm bằng workflow có trạng thái.</span></div>
+          <div class="timeline-row reveal"><b>05</b><strong>Create</strong><span>Biết biến prompt thành sản phẩm nội dung số.</span></div>
+          <div class="timeline-row reveal"><b>06</b><strong>Protect</strong><span>Biết dùng AI an toàn, có đạo đức và có kiểm chứng.</span></div>
+        </div>
+      </section>
+
+      <section id="conclusion" class="site-shell">
+        <div class="final-cta reveal">
+          <div>
+            <h2>Kết luận</h2>
+            <p>
+              Portfolio này không chỉ liệt kê công cụ đã dùng. Nó thể hiện cách tôi tổ chức,
+              kiểm chứng, hợp tác và chịu trách nhiệm với sản phẩm số trong quá trình học.
+            </p>
+          </div>
+          <a class="btn primary" href="https://app.notion.com/p/37778b21d03a81acac80f41d44eed624" target="_blank" rel="noreferrer">Xem reflection</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer site-shell">
+      <div>
+        <strong>Digital Intelligence Portfolio</strong>
+        <span>Trần Thanh Phúc · MSSV 25023517</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://app.notion.com/p/37778b21d03a81ea9ed7fc19d19c82a6" target="_blank" rel="noreferrer">Notion portfolio</a>
+        <a href="#projects">Các nhiệm vụ</a>
+      </div>
+    </footer>
+
+    <script>
+      const projects = [
+        {
+          no: "01",
+          title: "Quản trị tệp và thư mục",
+          summary: "Tổ chức dữ liệu học tập bằng cấu trúc thư mục, quy tắc đặt tên và quản lý phiên bản.",
+          tags: ["Folder", "Naming", "Versioning"],
+          color: "#0e8f8f",
+          image: "./assets/project-01-folder.png",
+          imageAlt: "Folder structure evidence",
+          imageCaption: "Minh họa hệ thống thư mục và quy tắc đặt tên file",
+          url: "https://app.notion.com/p/37778b21d03a8161aaa1d621fbacef23"
+        },
+        {
+          no: "02",
+          title: "Chiến lược khai thác dữ liệu",
+          summary: "Dùng toán tử tìm kiếm, nguồn học thuật và tiêu chí CRAAP để đánh giá độ tin cậy.",
+          tags: ["Search", "CRAAP", "Scholar"],
+          color: "#d9a520",
+          image: "./assets/project-02-search.png",
+          imageAlt: "Advanced search evidence",
+          imageCaption: "Minh họa tìm kiếm nâng cao bằng site: và filetype:",
+          url: "https://app.notion.com/p/37778b21d03a81fbbdd1d119e8d07f43"
+        },
+        {
+          no: "03",
+          title: "Prompt Engineering",
+          summary: "So sánh prompt mơ hồ với prompt có vai trò, bối cảnh, nhiệm vụ, format và tiêu chí.",
+          tags: ["Prompt", "AI", "Output"],
+          color: "#6750a4",
+          image: "./assets/project-03-prompt.png",
+          imageAlt: "Prompt engineering evidence",
+          imageCaption: "Minh họa prompt cải tiến và kết quả code AI trả về",
+          url: "https://app.notion.com/p/37778b21d03a8177b90dd7208dc0adca"
+        },
+        {
+          no: "04",
+          title: "Hợp tác trực tuyến",
+          summary: "Mô tả workflow nhóm bằng Kanban, phân công, trạng thái, deadline và phản hồi.",
+          tags: ["Kanban", "Teamwork", "Drive"],
+          color: "#2d9d68",
+          image: "./assets/project-04-kanban.jpg",
+          imageAlt: "Kanban board evidence",
+          imageCaption: "Minh họa workflow nhóm bằng bảng Kanban",
+          url: "https://app.notion.com/p/37b78b21d03a815290ecd00303815690"
+        },
+        {
+          no: "05",
+          title: "Sáng tạo nội dung với AI",
+          summary: "Từ ý tưởng và prompt đến sản phẩm số hoàn chỉnh, có chỉnh sửa và kiểm chứng.",
+          tags: ["AI Content", "Poster", "Design"],
+          color: "#e85d4f",
+          image: "./assets/project-05-ai-creation.png",
+          imageAlt: "AI content creation evidence",
+          imageCaption: "Minh họa sản phẩm nội dung được tạo với AI",
+          url: "https://app.notion.com/p/37778b21d03a8135a6d6c801ce81d5a0"
+        },
+        {
+          no: "06",
+          title: "AI có trách nhiệm",
+          summary: "Nhấn mạnh bảo mật dữ liệu, bản quyền, kiểm chứng thông tin và trách nhiệm cá nhân.",
+          tags: ["Ethics", "Privacy", "Safety"],
+          color: "#18212f",
+          image: "./assets/project-06-ethics.png",
+          imageAlt: "Responsible AI evidence",
+          imageCaption: "Minh họa các vấn đề đạo đức, bảo mật và an toàn AI",
+          url: "https://app.notion.com/p/37778b21d03a81b38295e56e7e08795a"
+        },
+        {
+          no: "07",
+          title: "Tổng kết và tự đánh giá",
+          summary: "Reflection về điều đã học, điểm mạnh, điểm cần cải thiện và định hướng phát triển.",
+          tags: ["Reflection", "Growth", "Review"],
+          color: "#4b6f95",
+          image: "./assets/hero-digital-portfolio.png",
+          imageAlt: "Digital portfolio reflection visual",
+          imageCaption: "Tổng kết quá trình học và phát triển năng lực số",
+          url: "https://app.notion.com/p/37778b21d03a81acac80f41d44eed624"
+        }
+      ];
+
+      const grid = document.querySelector("#projectGrid");
+      grid.innerHTML = projects.map((project) => `
+        <article class="project-card reveal" style="--accent:${project.color}">
+          <div class="thumb">
+            <img src="${project.image}" alt="${project.imageAlt}">
+            <span class="thumb-label">${project.imageCaption}</span>
+          </div>
+          <div class="project-body">
+            <span class="project-kicker">Nhiệm vụ ${project.no}</span>
+            <h3>${project.title}</h3>
+            <p>${project.summary}</p>
+            <div class="chips">
+              ${project.tags.map((tag) => `<span class="chip">${tag}</span>`).join("")}
+            </div>
+            <div class="project-footer">
+              <a class="btn small" href="${project.url}" target="_blank" rel="noreferrer">Xem chi tiết trên Notion</a>
+            </div>
+          </div>
+        </article>
+      `).join("");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("visible");
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+    </script>
+  </body>
+</html>
