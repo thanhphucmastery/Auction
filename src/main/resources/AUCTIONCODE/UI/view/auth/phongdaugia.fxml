@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="760.0" prefWidth="1120.0" spacing="20.0" styleClass="app-shell" stylesheets="@auction-theme.css" xmlns="http://javafx.com/javafx/21.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AUCTIONCODE.UI.Controller.auth.BidRoomController">
+   <padding>
+      <Insets bottom="28.0" left="28.0" right="28.0" top="28.0" />
+   </padding>
+   <children>
+      <HBox alignment="CENTER_LEFT" spacing="16.0" styleClass="surface-card">
+         <children>
+            <Button fx:id="OutRoomButton" mnemonicParsing="false" onAction="#OutRoom" prefHeight="38.0" prefWidth="112.0" styleClass="ghost-button" text="Rời phòng" />
+            <VBox spacing="3.0">
+               <children>
+                  <Label fx:id="auctionIdLabel" styleClass="muted" text="PHIÊN ĐẤU GIÁ" />
+                  <Label fx:id="titleLabel" styleClass="page-title" text="Tên sản phẩm" />
+               </children>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS" />
+            <VBox alignment="CENTER_RIGHT" spacing="3.0">
+               <children>
+                  <Label styleClass="muted" text="THỜI GIAN CÒN LẠI" />
+                  <Label fx:id="timerLabel" styleClass="timer-label" text="--" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+
+      <HBox spacing="24.0" VBox.vgrow="ALWAYS">
+         <children>
+            <ScrollPane fitToWidth="true" hbarPolicy="NEVER" pannable="true" prefWidth="420.0" style="-fx-background-color: white; -fx-background: white;" styleClass="surface-card" VBox.vgrow="ALWAYS">
+               <content>
+                  <VBox spacing="16.0">
+                     <children>
+                  <StackPane prefHeight="220.0" styleClass="image-placeholder">
+                     <children>
+                        <ImageView fx:id="itemImageView" fitHeight="220.0" fitWidth="380.0" preserveRatio="true" />
+                        <Label fx:id="imagePlaceholderLabel" text="Hình ảnh sản phẩm" styleClass="muted" />
+                     </children>
+                  </StackPane>
+
+                  <VBox spacing="5.0">
+                     <children>
+                        <Label styleClass="muted" text="GIÁ HIỆN TẠI" />
+                        <Label fx:id="priceLabel" styleClass="price-label" text="0 VND" />
+                        <Label fx:id="highestBidderLabel" styleClass="section-title" text="Chưa có người dẫn đầu" />
+                        <Label fx:id="stepPriceLabel" styleClass="muted" text="Bước giá: --" />
+                        <Label fx:id="bidCountLabel" styleClass="muted" text="0 lượt đặt giá" />
+                        <Label fx:id="resultNoticeLabel" styleClass="section-title" text="" wrapText="true" />
+                     </children>
+                  </VBox>
+
+                  <Separator />
+
+                  <VBox spacing="8.0">
+                     <children>
+                        <Label styleClass="section-title" text="Thông tin vật phẩm" />
+                        <Label fx:id="itemTypeLabel" styleClass="muted" text="Loại: --" wrapText="true" />
+                        <Label fx:id="itemDescriptionLabel" text="Chưa có mô tả." wrapText="true" />
+                        <Label fx:id="itemAttributesLabel" styleClass="muted" text="Thông số: --" wrapText="true" />
+                        <Label fx:id="sellerLabel" styleClass="muted" text="Người bán: --" wrapText="true" />
+                     </children>
+                  </VBox>
+
+                  <Separator />
+
+                  <VBox spacing="10.0">
+                     <children>
+                        <Label text="Đặt giá của bạn" style="-fx-font-weight: 800;" />
+                        <HBox spacing="10.0">
+                           <children>
+                              <TextField fx:id="bidAmountField" prefHeight="46.0" promptText="Nhập giá..." HBox.hgrow="ALWAYS" />
+                              <Button fx:id="bidButton" onAction="#PlaceBid" prefHeight="46.0" prefWidth="104.0" styleClass="primary-button" text="Đặt giá" />
+                           </children>
+                        </HBox>
+                        <Label styleClass="muted" text="Giá phải lớn hơn giá hiện tại và đủ số dư trong ví." wrapText="true" />
+                     </children>
+                  </VBox>
+
+                  <Separator />
+
+                  <VBox spacing="5.0">
+                     <children>
+                        <Label fx:id="statusLabel" styleClass="muted" text="Trạng thái: --" />
+                        <Label fx:id="openTimeLabel" styleClass="muted" text="Mở: --" />
+                        <Label fx:id="closeTimeLabel" styleClass="muted" text="Đóng: --" />
+                     </children>
+                  </VBox>
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
+
+            <VBox spacing="18.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox spacing="10.0" styleClass="surface-card">
+                     <children>
+                        <Label styleClass="section-title" text="Biến động giá theo thời gian thực" />
+                        <LineChart fx:id="priceChart" animated="false" createSymbols="true" legendVisible="false" prefHeight="260.0">
+                           <xAxis>
+                              <CategoryAxis label="Thời gian" side="BOTTOM" />
+                           </xAxis>
+                           <yAxis>
+                              <NumberAxis label="Giá" side="LEFT" />
+                           </yAxis>
+                        </LineChart>
+                     </children>
+                  </VBox>
+
+                  <VBox spacing="10.0" styleClass="surface-card" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Label styleClass="section-title" text="Lịch sử đặt giá" />
+                        <ListView fx:id="historyList" VBox.vgrow="ALWAYS" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>
+

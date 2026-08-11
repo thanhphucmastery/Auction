@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="760.0" prefWidth="1220.0" spacing="16.0" styleClass="admin-shell" stylesheets="@auction-theme.css" xmlns="http://javafx.com/javafx/21.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AUCTIONCODE.UI.Controller.auth.AdminController">
+   <padding>
+      <Insets bottom="24.0" left="24.0" right="24.0" top="24.0" />
+   </padding>
+   <children>
+      <HBox alignment="CENTER_LEFT" spacing="14.0" styleClass="admin-header">
+         <children>
+            <VBox spacing="4.0">
+               <children>
+                  <Label styleClass="page-title" text="Quản trị hệ thống" />
+                  <Label styleClass="muted" text="Theo dõi tài khoản, phiên đấu giá và thao tác vận hành" />
+               </children>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS" />
+            <VBox alignment="CENTER_RIGHT" spacing="3.0">
+               <children>
+                  <Label styleClass="muted-small" text="ADMIN" />
+                  <Label fx:id="adminNameLabel" styleClass="section-title" text="Admin" />
+               </children>
+            </VBox>
+            <Button onAction="#logout" prefHeight="40.0" prefWidth="112.0" styleClass="danger-button" text="Đăng xuất" />
+         </children>
+      </HBox>
+
+      <HBox spacing="14.0">
+         <children>
+            <VBox prefWidth="240.0" spacing="5.0" styleClass="stat-card compact-card">
+               <children>
+                  <Label styleClass="muted-small" text="TÀI KHOẢN" />
+                  <Label fx:id="userCountLabel" styleClass="section-title" text="0 tài khoản" />
+               </children>
+            </VBox>
+            <VBox prefWidth="240.0" spacing="5.0" styleClass="stat-card compact-card">
+               <children>
+                  <Label styleClass="muted-small" text="PHIÊN ĐẤU GIÁ" />
+                  <Label fx:id="auctionCountLabel" styleClass="section-title" text="0 phiên đấu giá" />
+               </children>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button fx:id="refreshButton" onAction="#refreshData" prefHeight="42.0" prefWidth="124.0" styleClass="ghost-button" text="Làm mới" />
+         </children>
+      </HBox>
+
+      <HBox spacing="16.0" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox prefWidth="390.0" spacing="10.0" styleClass="admin-panel">
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Label styleClass="section-title" text="Danh sách tài khoản" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button fx:id="deleteUserButton" onAction="#deleteSelectedUser" prefHeight="36.0" prefWidth="86.0" styleClass="danger-button" text="Xóa" />
+                     </children>
+                  </HBox>
+                  <Label styleClass="muted" text="Bấm vào username để xem thông tin chi tiết." />
+                  <TableView fx:id="userTable" styleClass="admin-table" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <TableColumn fx:id="colUserName" prefWidth="120.0" text="Username" />
+                        <TableColumn fx:id="colFullName" prefWidth="165.0" text="Họ tên" />
+                        <TableColumn fx:id="colRole" prefWidth="82.0" text="Role" />
+                     </columns>
+                  </TableView>
+               </children>
+            </VBox>
+
+            <VBox spacing="10.0" styleClass="admin-panel" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="10.0">
+                     <children>
+                        <Label styleClass="section-title" text="Quản lý phiên đấu giá" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label styleClass="muted" text="Gia hạn" />
+                        <Spinner fx:id="extendMinutesSpinner" prefHeight="38.0" prefWidth="96.0" />
+                        <Label styleClass="muted" text="phút" />
+                        <Button fx:id="extendButton" onAction="#extendSelectedAuction" prefHeight="38.0" prefWidth="92.0" styleClass="accent-button" text="Gia hạn" />
+                        <Button fx:id="endButton" onAction="#endSelectedAuction" prefHeight="38.0" prefWidth="96.0" styleClass="ghost-button" text="Kết thúc" />
+                        <Button fx:id="deleteAuctionButton" onAction="#deleteSelectedAuction" prefHeight="38.0" prefWidth="78.0" styleClass="danger-button" text="Xóa" />
+                     </children>
+                  </HBox>
+                  <TableView fx:id="auctionTable" styleClass="admin-table" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <TableColumn fx:id="colAuctionName" prefWidth="245.0" text="Phiên / sản phẩm" />
+                        <TableColumn fx:id="colSeller" prefWidth="190.0" text="Người bán" />
+                        <TableColumn fx:id="colAuctionPrice" prefWidth="138.0" text="Giá hiện tại" />
+                        <TableColumn fx:id="colAuctionTime" prefWidth="112.0" text="Còn lại" />
+                        <TableColumn fx:id="colAuctionStatus" prefWidth="122.0" text="Trạng thái" />
+                     </columns>
+                  </TableView>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>

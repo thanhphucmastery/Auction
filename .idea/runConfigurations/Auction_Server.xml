@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Auction Server" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="AUCTIONCODE.Network.AuctionServer" />
+    <module name="online-auction" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

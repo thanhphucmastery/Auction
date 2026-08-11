@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane prefHeight="720.0" prefWidth="1100.0" styleClass="app-shell" stylesheets="@auction-theme.css" xmlns="http://javafx.com/javafx/21.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AUCTIONCODE.UI.Controller.auth.NapRutTienController">
+   <children>
+      <VBox spacing="20.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="12.0">
+               <children>
+                  <VBox spacing="3.0">
+                     <children>
+                        <Label styleClass="page-title" text="Ví tiền tài khoản" />
+                        <Label styleClass="muted" text="Nạp tiền, rút tiền và chuẩn bị số dư trước khi đấu giá" />
+                     </children>
+                  </VBox>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button fx:id="BackButton" mnemonicParsing="false" onAction="#BackMain" prefHeight="40.0" prefWidth="110.0" styleClass="ghost-button" text="Trở về" />
+               </children>
+            </HBox>
+
+            <HBox spacing="24.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox prefWidth="510.0" spacing="18.0" styleClass="surface-card">
+                     <children>
+                        <VBox spacing="7.0">
+                           <children>
+                              <Label text="Số tiền giao dịch (VND)" style="-fx-font-weight: 800;" />
+                              <TextField fx:id="amount" prefHeight="52.0" promptText="Ví dụ: 500000" style="-fx-font-size: 18px;" />
+                           </children>
+                        </VBox>
+
+                        <VBox spacing="10.0">
+                           <children>
+                              <Label styleClass="muted" text="Chọn nhanh" />
+                              <FlowPane hgap="10.0" vgap="10.0">
+                                 <children>
+                                    <Button onAction="#quick500k" prefHeight="34.0" prefWidth="102.0" styleClass="quick-button" text="500K" />
+                                    <Button onAction="#quick1m" prefHeight="34.0" prefWidth="102.0" styleClass="quick-button" text="1M" />
+                                    <Button onAction="#quick5m" prefHeight="34.0" prefWidth="102.0" styleClass="quick-button" text="5M" />
+                                    <Button onAction="#quick10m" prefHeight="34.0" prefWidth="102.0" styleClass="quick-button" text="10M" />
+                                 </children>
+                              </FlowPane>
+                           </children>
+                        </VBox>
+
+                        <Separator />
+
+                        <VBox spacing="10.0">
+                           <children>
+                              <Label text="Phương thức thanh toán" style="-fx-font-weight: 800;" />
+                              <RadioButton selected="true" text="Chuyển khoản ngân hàng">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="paymentMethod" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton text="Ví điện tử" toggleGroup="$paymentMethod" />
+                              <RadioButton text="Thẻ quốc tế" toggleGroup="$paymentMethod" />
+                           </children>
+                        </VBox>
+
+                        <Region VBox.vgrow="ALWAYS" />
+                        <Button fx:id="XacNhanNapTienButton" maxWidth="Infinity" onAction="#handleDeposit" prefHeight="52.0" styleClass="primary-button" text="Xác nhận nạp tiền" />
+                        <Button fx:id="XacNhanRutTienButton" maxWidth="Infinity" onAction="#handleWithdraw" prefHeight="52.0" styleClass="danger-button" text="Xác nhận rút tiền" />
+                     </children>
+                  </VBox>
+
+                  <VBox spacing="18.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <VBox spacing="10.0" styleClass="hero-card">
+                           <children>
+                              <Label styleClass="hero-title" text="Ví đã sẵn sàng" />
+                              <Label styleClass="hero-copy" text="Số dư được gửi lên server qua lệnh nạp/rút và cập nhật lại trên trang chủ." wrapText="true" />
+                           </children>
+                        </VBox>
+
+                        <VBox alignment="CENTER" spacing="14.0" styleClass="surface-card" VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label text="Thông tin chuyển khoản" style="-fx-font-size: 18px; -fx-font-weight: 800;" />
+                              <Pane prefHeight="210.0" prefWidth="210.0" styleClass="image-placeholder" />
+                              <Label styleClass="muted" text="Nội dung chuyển khoản" />
+                              <Label text="NAP_DAUGIA_USERNAME" style="-fx-font-family: 'Consolas'; -fx-font-size: 18px; -fx-font-weight: 800;" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+   <padding>
+      <Insets bottom="32.0" left="32.0" right="32.0" top="32.0" />
+   </padding>
+</StackPane>
+
